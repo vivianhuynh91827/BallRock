@@ -43,8 +43,14 @@ class Ball extends Thing implements Moveable {
 
   void display() {
     /* KAYLA */
+    float prevX = x;
+    float prevY = y;
     fill(255);
     ellipse(x, y, 10, 10);
+    for (int a = 0; a < n; a++) {
+      line(prevX, prevY, );
+    }
+    
   }
 
   void move() {
