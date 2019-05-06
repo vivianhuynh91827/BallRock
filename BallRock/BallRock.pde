@@ -28,28 +28,30 @@ class Rock extends Thing {
 }
 
 public class LivingRock extends Rock implements Moveable {
+  float increment = random(5);
   LivingRock(float x, float y) {
     super(x, y);
   }
   void move() {
     /* ONE PERSON WRITE THIS */
-    this.x += random(5);
+    /*this.x += random(5);
     this.y += random(5);
+    */
     if(this.x >= 1000) this.x = 0;
     if(this.y >= 800) this.y = 0;
     
-    /*
-    for(int i = 0; i < 10; i++){
-      this.x += increment;
-      this.y += increment;
-    }
+    //straight path
+    //this.x += increment;
+    
+    //staircase
+    /* 
+    this.x += increment;
+    this.y += increment;
     */
     
-    /*for(int i = 0; i < 10; i++){
-      this.x += increment;
-      this.y += increment;
-    }
-    */
+    //moving in a circle
+    //this.x 
+    
   }
 }
 
