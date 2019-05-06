@@ -36,9 +36,17 @@ public class LivingRock extends Rock implements Moveable {
 }
 
 class Ball extends Thing implements Moveable {
+  int n;
+  String movement;
   Ball(float x, float y) {
 
     super(x, y);
+  }
+  
+  Ball(float x, float y, int sides, String move) {
+     super(x,y);
+     n = sides;
+     movement = move;
   }
 
   void display() {
@@ -49,8 +57,8 @@ class Ball extends Thing implements Moveable {
 
   void move() {
     /* VIVIAN */
-    x += random(-2,2);
-    y += random(-2,2);
+    x += random(2);
+    y += random(2);
   }
 }
 
