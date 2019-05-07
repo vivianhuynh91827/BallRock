@@ -43,7 +43,6 @@ public class LivingRock extends Rock implements Moveable {
   float increment = random(10);
   LivingRock(float x, float y) {
     super(x, y);
-    
   }
   void move() {
     /* ONE PERSON WRITE THIS */
@@ -74,7 +73,11 @@ public class LivingRock extends Rock implements Moveable {
     
     
   }
-  
+  @Override
+  void diplay() {
+    super.display();
+    
+  }
   
       
 }
