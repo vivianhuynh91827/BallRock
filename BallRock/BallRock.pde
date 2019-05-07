@@ -17,13 +17,17 @@ abstract class Thing implements Displayable {
 }
 
 class Rock extends Thing {
+  
+  
   Rock(float x, float y) {
     super(x, y);
   }
 
   void display() {
     fill(220, 220, 220);
-    rect(x, y, 10.0, 10.0);
+    //rect(x, y, 10.0, 10.0);
+    //rect(x, y, 20.0, 20.0, 5);
+    
   }
 }
 
