@@ -38,6 +38,8 @@ public class LivingRock extends Rock implements Moveable {
 class Ball extends Thing implements Moveable {
   int n;
   String movement;
+  int col;
+  
   Ball(float x, float y) {
 
     super(x, y);
@@ -47,17 +49,20 @@ class Ball extends Thing implements Moveable {
      super(x,y);
      n = sides;
      movement = move;
+     col = int(random(255));
   }
 
   void display() {
     /* KAYLA */
     float prevX = x;
     float prevY = y;
-    fill(255);
+    fill(col, col, col);
     ellipse(x, y, 10, 10);
-    for (int a = 0; a < n; a++) {
-      line(prevX, prevY, );
-    }
+    //rect(x, y, 34, 34);
+    image(img, x, y, 50, 50);
+    //for (int a = 0; a < n; a++) {
+    //  line(prevX, prevY, );
+    //}
     
   }
 
@@ -72,10 +77,10 @@ class Ball extends Thing implements Moveable {
 
 ArrayList<Displayable> thingsToDisplay;
 ArrayList<Moveable> thingsToMove;
-
+PImage img;
 void setup() {
   size(1000, 800);
-
+  img = loadImage("https://upload.wikimedia.org/wikipedia/commons/thumb/7/7a/Basketball.png/220px-Basketball.png");
   thingsToDisplay = new ArrayList<Displayable>();
   thingsToMove = new ArrayList<Moveable>();
   for (int i = 0; i < 10; i++) {
