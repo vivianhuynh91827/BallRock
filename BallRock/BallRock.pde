@@ -68,8 +68,16 @@ class Ball extends Thing implements Moveable {
 
   void move() {
     /* VIVIAN */
-    x += random(2);
-    y += random(2);
+    if ((x < width) && (y < height)) {
+      x += random(2);
+      y += random(2);
+    }
+    else {
+      x -= random(8);
+      y -= random(8);
+    }
+    
+    
   }
 }
 
