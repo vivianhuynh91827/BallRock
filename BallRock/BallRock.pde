@@ -39,15 +39,26 @@ class Rock extends Thing {
   }
 }
 
+final float C_X = 500;
+final float  C_Y = 400;
+
 public class LivingRock extends Rock implements Moveable {
   float incrementX, incrementY;
   int moveV;
+  float radius;
+  
+  
   LivingRock(float x, float y) {
     super(x, y);
-    moveV = (int) random(5);
-    incrementX = random(10);
-    incrementY = random(10);
-  }
+    moveV = 3; //floor(random(5));
+    incrementX = random(20);
+    incrementY = random(20);
+    
+    
+    if (moveV == 4) {
+      radius = sqrt(pow((x - C_X), 2) + pow((y - C_Y), 2));
+    }
+    }
   
   void move() {
     /* ONE PERSON WRITE THIS */
@@ -56,46 +67,34 @@ public class LivingRock extends Rock implements Moveable {
     this.y += random(5);
     */
     
+    if(this.x >= 1000  || this.x <= 0) incrementX *= -1;
+    if(this.y >= 800 || this.y <=  0) incrementY *= -1;
+      
     if(moveV == 0){ //moving horizontally
       this.x += incrementX;
-      if(this.x >= 1000) this.x = 0;
     }
     
     if(moveV == 1){ //moving vertically
       this.y += incrementY;
-      if(this.y >= 800) this.y = 0;
     }
 
     if(moveV == 2){ //move diagonally, bouncing
       this.x += incrementX;
       this.y += incrementY;
-      if(this.x >= 1000) incrementX *= -1;
-      if(this.x <= 0) incrementX *= -1;
-      if(this.y >= 800) incrementY *= -1;
-      if(this.y <= 0) incrementY *= -1;
     }
     
     if(moveV == 3){ //bouncing up and down
-      if(this.x >= 1000) this.x = 0;
-      if(this.y >= 800){
-        incrementY *= -1;
-        this.x += 50;
-      }
-      if(this.y <= 0){
-        incrementY *= -1;
-        this.x += 50;
-      }
-      this.y += incrementY;
+      x += x * incrementX / y;
+      y += x * incrementY / y;
+      
     }
     
     //moving around the center of the screen
     if(moveV == 4){
-      float centerx, centery;
-      centerx = 500;
-      centery = 400;
+      //int radius = sqrt(centerx * centerx)
         float t = millis()/1000.0f;
-        this.x = (int)(centerx+100*cos(t));
-        this.y = (int)(centery+100*sin(t));
+        this.x = (int)(C_X+ radius * cos(t));
+        this.y = (int)(C_Y+ radius * sin(t));
       //if(this.x >= 1000) this.x = -this.x;
       //if(this.y >= 800) this.y = -this.y;
     }
@@ -103,7 +102,7 @@ public class LivingRock extends Rock implements Moveable {
     
   }
   @Override
-  void diplay() {
+  void display() {
     super.display();
     
   }
