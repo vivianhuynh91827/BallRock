@@ -26,7 +26,7 @@ class Rock extends Thing {
   void display() {
     fill(220, 220, 220);
     //rect(x, y, 10.0, 10.0);
-    //rect(x, y, 20.0, 20.0, 5);
+    rect(x, y, 20.0, 20.0, 5);
     
   }
 }
