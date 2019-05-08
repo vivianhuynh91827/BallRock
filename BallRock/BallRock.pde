@@ -1,3 +1,6 @@
+final int MAX_WIDTH = 1000;
+final int MAX_HEIGHT = 800;
+
 interface Displayable {
   void display();
 }
@@ -16,17 +19,20 @@ abstract class Thing implements Displayable {
   abstract void display();
 }
 
+
+
 class Rock extends Thing {
   PImage img;
   
+  final PImage[] ROCK_IMGS = new PImage[] {
+      loadImage("rock.png"),
+      loadImage("rock2.png"),
+    };
+  final PImage EYE_IMG = loadImage("eyes.png");
+  
   Rock(float x, float y) {
     super(x, y);
-    if (floor(random(2)) == 1) {
-      img = loadImage("rock2.png");
-    } else {
-      img = loadImage("rock.png");
-    }
-      
+    img = ROCK_IMGS[floor(random(2))];
   }
   
 
@@ -39,10 +45,26 @@ class Rock extends Thing {
   }
 }
 
+public static enum LvRockType {
+  LN, // Line
+  CIRCLE, // circle
+}
+
 public class LivingRock extends Rock implements Moveable {
-  float increment = random(10);
+  float x_inc, y_inc;
+  
+  // automatically assigned
+  PImage eye = EYE_IMG;
+  
+  LvRockType mvType;
+  
+  
+  
   LivingRock(float x, float y) {
     super(x, y);
+    x_inc = random(5);
+    y_inc = random(10);
+    mvType = LvRockType.LN;//LvRockType.values()[floor(random(LvRockType.values().length))];
   }
   void move() {
     /* ONE PERSON WRITE THIS */
@@ -51,32 +73,31 @@ public class LivingRock extends Rock implements Moveable {
     this.y += random(5);
     */
     
-    if(this.x >= 1000) this.x = -this.x;
-    if(this.y >= 800) this.y = -this.y;
+    // bouncing behavior
+    if(x >= MAX_WIDTH - 50 || x <= 0) x_inc *= -1;
+    if(y >= MAX_HEIGHT - 50 || y <= 0) y_inc *= -1;
+        
+    switch (mvType) {
+      case LN: //straight path
+      x += x_inc;
+      y += y_inc;
+      break;
     
-    //straight path
-    //this.x += increment;
-    
-    //staircase
-    /*
-    this.x += increment;
-    this.y += increment;
-    */
-    
-    //moving in an arc
-    float centerx, centery;
-    centerx = this.x;
-    centery = this.y;
-    float t = millis()/1000.0f;
-    this.x = (int)(centerx+10*cos(t));
-    this.y = (int)(centery+10*sin(t));
-    
-    
+      case CIRCLE: //moving in an arc
+      float centerx, centery;
+      centerx = this.x + 10;
+      centery = this.y + 10;
+      float radius = 10.0;
+      float t = millis()/1000.0f;
+      this.x = (int)(centerx+radius*cos(t));
+      this.y = (int)(centery+radius*sin(t));
+      break;
+    }
   }
   @Override
-  void diplay() {
+  void display() {
     super.display();
-    
+    image(eye, x + 10, y + 10, 50, 50);
   }
   
       
@@ -119,14 +140,16 @@ void setup() {
     thingsToDisplay.add(m);
     thingsToMove.add(m);
   }
+  
+  
 }
 void draw() {
   background(255);
-
   for (Displayable thing : thingsToDisplay) {
     thing.display();
   }
   for (Moveable thing : thingsToMove) {
     thing.move();
   }
+  
 }
