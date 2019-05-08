@@ -39,13 +39,10 @@ class Ball extends Thing implements Moveable {
   //int n;
   //String movement;
   int col;
-  PImage img;
-  PImage img1;
-  int randMove;
-  int randImg;
-  float r;
-  float b;
-  float g;
+  PImage img,img1;
+  int randMove,randImg;
+  float r,b,g;
+  float xspeed, yspeed;
   
   Ball(float x, float y) {
 
@@ -80,27 +77,22 @@ class Ball extends Thing implements Moveable {
 
   void move() {
     /* VIVIAN */
-    if ((x < width) && (y < height)) {
-      x += random(2);
-      y += random(2);
+    int direc = 1;
+    if (randMove == 0) {//moving horizontally
+      x += direc*2;
     }
-    else {
-      x -= random(8);
-      y -= random(8);
+    else if (randMove == 1) {//moving vertically 
+      y += direc*2;
     }
-    if (randMove == 1) {//moving horizontally
-      x += random(2);
+    else if (randMove == 2) { //moving diagonally 
+      x += direc*2;
+      y += direc*2;
     }
-    else if (randMove == 0) {//moving vertically 
-      y += random(2);
+    if (x > width|| y > height) {
+      direc *= -1;
+      x = width-1;
+      y = height-1;
     }
-    else if (randMove == 0) { //moving diagonally
-      x += random(2);
-      y += random(2);
-    }
-    
-    
-    
   }
 }
 
@@ -111,7 +103,6 @@ ArrayList<Moveable> thingsToMove;
 
 void setup() {
   size(1000, 800);
-  
   thingsToDisplay = new ArrayList<Displayable>();
   thingsToMove = new ArrayList<Moveable>();
   for (int i = 0; i < 10; i++) {
