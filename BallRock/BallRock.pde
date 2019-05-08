@@ -34,7 +34,7 @@ class Rock extends Thing {
     //fill(220, 220, 220);
     //rect(x, y, 10.0, 10.0);
     //rect(x, y, 20.0, 20.0, 5);
-    image(img, x, y, 50, 50); 
+    image(img, x, y, 50, 50);
     
   }
 }
@@ -44,9 +44,12 @@ public class LivingRock extends Rock implements Moveable {
   int moveV;
   LivingRock(float x, float y) {
     super(x, y);
+<<<<<<< HEAD
     moveV = (int) random(5);
     incrementX = random(10);
     incrementY = random(10);
+=======
+>>>>>>> d2b2290beae814e15d8fd2911b3c4aede96385a6
   }
   
   void move() {
@@ -102,7 +105,11 @@ public class LivingRock extends Rock implements Moveable {
     
     
   }
-  
+  @Override
+  void diplay() {
+    super.display();
+    
+  }
   
       
 }
