@@ -17,46 +17,69 @@ abstract class Thing implements Displayable {
 }
 
 class Rock extends Thing {
-  
+  PImage img;
   
   Rock(float x, float y) {
     super(x, y);
+    if (floor(random(2)) == 1) {
+      img = loadImage("rock2.png");
+    } else {
+      img = loadImage("rock.png");
+    }
+      
   }
+  
 
   void display() {
-    fill(220, 220, 220);
+    //fill(220, 220, 220);
     //rect(x, y, 10.0, 10.0);
-    rect(x, y, 20.0, 20.0, 5);
+    //rect(x, y, 20.0, 20.0, 5);
+    image(img, x, y, 50, 50);
     
   }
 }
 
 public class LivingRock extends Rock implements Moveable {
-  float increment = random(5);
+  float increment = random(10);
   LivingRock(float x, float y) {
     super(x, y);
   }
   void move() {
     /* ONE PERSON WRITE THIS */
-    /*this.x += random(5);
+    /*
+    this.x += random(5);
     this.y += random(5);
     */
-    if(this.x >= 1000) this.x = 0;
-    if(this.y >= 800) this.y = 0;
+    
+    if(this.x >= 1000) this.x = -this.x;
+    if(this.y >= 800) this.y = -this.y;
     
     //straight path
     //this.x += increment;
     
     //staircase
-    /* 
+    /*
     this.x += increment;
     this.y += increment;
     */
     
-    //moving in a circle
-    //this.x 
+    //moving in an arc
+    float centerx, centery;
+    centerx = this.x;
+    centery = this.y;
+    float t = millis()/1000.0f;
+    this.x = (int)(centerx+10*cos(t));
+    this.y = (int)(centery+10*sin(t));
+    
     
   }
+  @Override
+  void diplay() {
+    super.display();
+    
+  }
+  
+      
 }
 
 class Ball extends Thing implements Moveable {
