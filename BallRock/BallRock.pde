@@ -36,30 +36,42 @@ public class LivingRock extends Rock implements Moveable {
 }
 
 class Ball extends Thing implements Moveable {
-  int n;
-  String movement;
+  //int n;
+  //String movement;
   int col;
+  PImage img;
+  PImage img1;
+  int randMove;
+  int randImg;
+  float r;
+  float b;
+  float g;
   
   Ball(float x, float y) {
 
     super(x, y);
-  }
-  
-  Ball(float x, float y, int sides, String move) {
-     super(x,y);
-     n = sides;
-     movement = move;
-     col = int(random(255));
+    randMove = (int) random(7);
+    randImg = (int) random(2);
+    r = random(255);
+    g = random (255);
+    b = random (255);
+    img = loadImage("https://upload.wikimedia.org/wikipedia/commons/thumb/7/7a/Basketball.png/220px-Basketball.png");
+    img1 = loadImage("https://mikasasports.com/wp-content/uploads/2015/04/MVA2001.png");
   }
 
   void display() {
     /* KAYLA */
     float prevX = x;
     float prevY = y;
-    fill(col, col, col);
+    fill(r, g, b);
     ellipse(x, y, 10, 10);
     //rect(x, y, 34, 34);
-    image(img, x, y, 50, 50);
+    if (randImg == 1) {
+      image(img, x, y, 50, 50);
+    }
+    else if (randImg == 0) {
+      image(img1, x, y, 50, 50);
+    }
     //for (int a = 0; a < n; a++) {
     //  line(prevX, prevY, );
     //}
@@ -76,6 +88,17 @@ class Ball extends Thing implements Moveable {
       x -= random(8);
       y -= random(8);
     }
+    if (randMove == 1) {//moving horizontally
+      x += random(2);
+    }
+    else if (randMove == 0) {//moving vertically 
+      y += random(2);
+    }
+    else if (randMove == 0) { //moving diagonally
+      x += random(2);
+      y += random(2);
+    }
+    
     
     
   }
@@ -85,10 +108,10 @@ class Ball extends Thing implements Moveable {
 
 ArrayList<Displayable> thingsToDisplay;
 ArrayList<Moveable> thingsToMove;
-PImage img;
+
 void setup() {
   size(1000, 800);
-  img = loadImage("https://upload.wikimedia.org/wikipedia/commons/thumb/7/7a/Basketball.png/220px-Basketball.png");
+  
   thingsToDisplay = new ArrayList<Displayable>();
   thingsToMove = new ArrayList<Moveable>();
   for (int i = 0; i < 10; i++) {
