@@ -39,38 +39,50 @@ class Ball extends Thing implements Moveable {
   //int n;
   //String movement;
   int col;
-  PImage img;
-  PImage img1;
+  PImage i ;
   int randMove;
-  int randImg;
+  int mode;
   float r;
   float b;
   float g;
   
   Ball(float x, float y) {
-
     super(x, y);
-    randMove = (int) random(7);
     randImg = (int) random(2);
     r = random(255);
     g = random (255);
     b = random (255);
-    img = loadImage("https://upload.wikimedia.org/wikipedia/commons/thumb/7/7a/Basketball.png/220px-Basketball.png");
-    img1 = loadImage("https://mikasasports.com/wp-content/uploads/2015/04/MVA2001.png");
+  }
+  Ball(float x, float y, PImage im, int m) {
+
+    super(x, y);
+    mode = m;
+    i = im;
+    r = random(255);
+    g = random (255);
+    b = random (255);
+    
+  }
+  Ball(float x, float y, int m) {
+    super(x, y);
+    mode = m;
+    r = random(255);
+    g = random (255);
+    b = random (255);
   }
 
   void display() {
     /* KAYLA */
     float prevX = x;
     float prevY = y;
-    fill(r, g, b);
-    ellipse(x, y, 10, 10);
+    
     //rect(x, y, 34, 34);
-    if (randImg == 1) {
-      image(img, x, y, 50, 50);
+    if (mode == 1) {
+      image(i, x, y, 50, 50);
     }
-    else if (randImg == 0) {
-      image(img1, x, y, 50, 50);
+    else if (mode == 0) {
+      fill(r, g, b);
+      ellipse(x, y, 10, 10);
     }
     //for (int a = 0; a < n; a++) {
     //  line(prevX, prevY, );
@@ -108,16 +120,41 @@ class Ball extends Thing implements Moveable {
 
 ArrayList<Displayable> thingsToDisplay;
 ArrayList<Moveable> thingsToMove;
-
+PImage img;
+PImage img1;
+int randMode = (int) random(3);
+int randImg = (int) random(2);
 void setup() {
   size(1000, 800);
-  
+  img = loadImage("https://upload.wikimedia.org/wikipedia/commons/thumb/7/7a/Basketball.png/220px-Basketball.png");
+  img1 = loadImage("https://mikasasports.com/wp-content/uploads/2015/04/MVA2001.png");
   thingsToDisplay = new ArrayList<Displayable>();
   thingsToMove = new ArrayList<Moveable>();
   for (int i = 0; i < 10; i++) {
-    Ball b = new Ball(50+random(width-100), 50+random(height-100));
-    thingsToDisplay.add(b);
-    thingsToMove.add(b);
+    if (randMode == 2) {
+      if (randImg == 0) {
+        Ball b = new Ball(50+random(width-100), 50+random(height-100), img, 2);
+        thingsToDisplay.add(b);
+        thingsToMove.add(b);
+      }
+      else {
+        Ball b = new Ball(50+random(width-100), 50+random(height-100), img1, 2);
+        thingsToDisplay.add(b);
+        thingsToMove.add(b);
+      }
+    }
+    else if (randMode == 1) {
+      Ball b = new Ball(50+random(width-100), 50+random(height-100), 1);
+      thingsToDisplay.add(b);
+      thingsToMove.add(b);
+    }
+    else {
+      Ball b = new Ball(50+random(width-100), 50+random(height-100), 0);
+      thingsToDisplay.add(b);
+      thingsToMove.add(b);
+    }
+    //Ball b = new Ball(50+random(width-100), 50+random(height-100));
+    
     Rock r = new Rock(50+random(width-100), 50+random(height-100));
     thingsToDisplay.add(r);
   }
