@@ -5,7 +5,7 @@ class Rock extends Thing {
     super(x, y);
     img = ROCK_IMGS[floor(random(2))];
   }
-  
+
   void display() {
     //fill(220, 220, 220);
     //rect(x, y, 10.0, 10.0);

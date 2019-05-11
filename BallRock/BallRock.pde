@@ -1,3 +1,4 @@
+
 final int MAX_WIDTH = 1000;
 final int MAX_HEIGHT = 800;
 
@@ -9,15 +10,18 @@ interface Moveable {
   void move();
 }
 
-final PImage[] ROCK_IMGS = new PImage[] {
-  loadImage("rock.png"), 
-  loadImage("rock2.png"), 
-};
-final PImage EYE_IMG = loadImage("eyes.png");
+PImage[] ROCK_IMGS;
+PImage EYE_IMG;
+PImage[] BALL_IMGS;
 
-final PImage[] BALL_IMGS = new PImage[] {
-  loadImage("basketball.png"),
-  loadImage("volleyball.png"),
+abstract class Thing implements Displayable {
+  float x, y;//Position of the Thing
+
+  Thing(float x, float y) {
+    this.x = x;
+    this.y = y;
+  }
+  abstract void display();
 }
 
 /*DO NOT EDIT THE REST OF THIS */
@@ -25,33 +29,28 @@ final PImage[] BALL_IMGS = new PImage[] {
 ArrayList<Displayable> thingsToDisplay;
 ArrayList<Moveable> thingsToMove;
 
-int randMode = (int) random(3);
-int randImg = (int) random(2);
 void setup() {
   size(1000, 800);
+  
+  // Init Images. No way around this.
+  BALL_IMGS = new PImage[] {
+    loadImage("basketball.png"), 
+    loadImage("volleyball.png"), 
+  };
+  ROCK_IMGS = new PImage[] {
+    loadImage("rock.png"), 
+    loadImage("rock2.png"), 
+  };
+  EYE_IMG = loadImage("eyes.png");
+  
+  
   thingsToDisplay = new ArrayList<Displayable>();
   thingsToMove = new ArrayList<Moveable>();
   for (int i = 0; i < 10; i++) {
-    if (randMode == 2) {
-      if (randImg == 0) {
-        Ball b = new Ball(50+random(width-100), 50+random(height-100), img, 2);
-        thingsToDisplay.add(b);
-        thingsToMove.add(b);
-      } else {
-        Ball b = new Ball(50+random(width-100), 50+random(height-100), img1, 2);
-        thingsToDisplay.add(b);
-        thingsToMove.add(b);
-      }
-    } else if (randMode == 1) {
-      Ball b = new Ball(50+random(width-100), 50+random(height-100), 1);
-      thingsToDisplay.add(b);
-      thingsToMove.add(b);
-    } else {
-      Ball b = new Ball(50+random(width-100), 50+random(height-100), 0);
-      thingsToDisplay.add(b);
-      thingsToMove.add(b);
-    }
-    //Ball b = new Ball(50+random(width-100), 50+random(height-100));
+
+    Ball b = new Ball(50+random(width-100), 50+random(height-100));
+    thingsToDisplay.add(b);
+    thingsToMove.add(b);
 
     Rock r = new Rock(50+random(width-100), 50+random(height-100));
     thingsToDisplay.add(r);
