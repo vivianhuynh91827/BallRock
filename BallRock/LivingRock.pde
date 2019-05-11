@@ -61,24 +61,18 @@ public class LivingRock extends Rock implements Moveable, Collideable{
       //if(this.y >= 800) this.y = -this.y;
     }
     
-    for(int i = 0; i < ListOfCollideables.size(); i++){
-      Thing temp = (Thing) ListOfCollideables.get(i);
-      if(this != temp){
-        if(isTouching(temp)){
-          if(this.img == ROCK_IMGS[0]){
-            this.img = ROCK_IMGS[1];
-          }else this.img = ROCK_IMGS[0];
+    for(Collideable c : ListOfCollideables){
+      if(c != this){
+        if(c.isTouching(this)){
+          if(this.img == ROCK_IMGS[0]) this.img = ROCK_IMGS[1];
+          else this.img = ROCK_IMGS[0];
         }
       }
     }
   }
   
   boolean isTouching(Thing other) {
-<<<<<<< HEAD
     return super.isTouching(other);
-=======
-    return false;
->>>>>>> b23a117f4d021a2ef11c1c31c5a7fbc5e09e1bde
   }
   
   @Override
