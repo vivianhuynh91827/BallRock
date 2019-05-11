@@ -7,9 +7,9 @@ class RealBall extends Ball implements Moveable {
 
   RealBall(float x, float y) {
     super(x, y);
-    speedX = random(5);
+    speedX = random(2,3);
     parabHeight = y; //parabola = x^2 - parabHeight // dydt = -2x(dxdt) // dxdt = speedX
-    parabWidth = 2* sqrt(1000-y);
+    parabWidth = 2* sqrt(800-y);
     xTravelled = parabWidth *.5;
     r = random(255);
     g = random(255);
@@ -42,13 +42,14 @@ class RealBall extends Ball implements Moveable {
     /* VIVIAN */
     prevX = x;
     prevY = y;
-    float dydt = (xTravelled * speedX * 2)/30;
+    float dydt = ((xTravelled-(.5*parabWidth)) * speedX * 2)/10;
     x += speedX;
-    y += dydt;
-    xTravelled += speedX;
+    y -= dydt;
+    xTravelled += abs(speedX);
     if (xTravelled >=parabWidth) {
       xTravelled = 0; //reset parabola
     }
     touchWall();
   }
+  
 }

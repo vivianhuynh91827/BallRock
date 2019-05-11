@@ -48,10 +48,10 @@ class Ball extends Thing implements Moveable {
   }
   
   void touchWall() {
-    if ((x > MAX_WIDTH-45 && prevX < MAX_WIDTH-45) || (x < 0 && prevX > 0)) {
+    if ((x > MAX_WIDTH-30 && prevX < MAX_WIDTH-30) || (x < 20 && prevX > 20)) {
       speedX *= -1;
     }
-    if ((y > MAX_HEIGHT-45 && prevY < MAX_HEIGHT-45) || ( y < 0 && prevY > 0)) {
+    if ((y > MAX_HEIGHT-30 && prevY < MAX_HEIGHT-30) || ( y < 20 && prevY > 20)) {
       speedY *= -1;
     }
   }
