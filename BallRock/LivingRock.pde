@@ -14,8 +14,8 @@ public class LivingRock extends Rock implements Moveable, Collideable{
   LivingRock(float x, float y) {
     super(x, y);
     moveV = floor(random(5));
-    incX = random(20);
-    incY = random(20);
+    incX = random(1, 20);
+    incY = random(1, 20);
 
     if (moveV == 4) {
       radius = sqrt(pow((x - C_X), 2) + pow((y - C_Y), 2));
@@ -47,8 +47,12 @@ public class LivingRock extends Rock implements Moveable, Collideable{
     }
 
     if (moveV == 3) { //bouncing up and down
-      //x += x * incX / y;
-      //y += x * incY / y;
+      x += x * (incX / y) * incX + 1;
+      if(this.x < 0) this.x = -this.x;
+      if(this.x > 1000) this.x = 900;
+      y += x * (incY / y) * incY + 1;
+      if(this.y < 0) this.y = -this.y;
+      if(this.y > 800) this.y = 700;
     }
 
     //moving around the center of the screen
