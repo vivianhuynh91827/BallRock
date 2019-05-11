@@ -16,3 +16,7 @@ We used some references from this website: https://processing.org/discourse/beta
 5/8/19:
 - Tiffany added some features to the move method in regards to the wrapping of the screen and what happens when the object moves out of the screen. She also fixed the circle path code that makes the objects orbit in a circle around the center.
 - Tiffany and Ruoshui played around with the increment speeds, using the x and y values.
+
+5/10/19:
+- Ruoshui added eyes to the living rock and adjusted move method.
+- Tiffany experimented with x / y increment speeds.
