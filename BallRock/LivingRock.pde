@@ -23,7 +23,7 @@ public class LivingRock extends Rock implements Moveable {
   }
 
   void move() {
-    /* ONE PERSON WRITE THIS */
+    /* TIFFANY */
     /*
     this.x += random(5);
      this.y += random(5);
@@ -68,6 +68,7 @@ public class LivingRock extends Rock implements Moveable {
   
   @Override
     void display() {
+    // RUOSHUI
     super.display();
     image(eye, x + 10, y + 10, 50, 50);
   }
