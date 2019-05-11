@@ -74,7 +74,11 @@ public class LivingRock extends Rock implements Moveable, Collideable{
   }
   
   boolean isTouching(Thing other) {
+<<<<<<< HEAD
     return super.isTouching(other);
+=======
+    return false;
+>>>>>>> b23a117f4d021a2ef11c1c31c5a7fbc5e09e1bde
   }
   
   @Override

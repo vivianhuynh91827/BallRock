@@ -7,9 +7,13 @@ class Rock extends Thing implements Collideable {
   }
   
   boolean isTouching(Thing other) {
+<<<<<<< HEAD
     if(this.x == other.x && this.y == other.y){
       return true;
     }else return false;
+=======
+    return false;
+>>>>>>> b23a117f4d021a2ef11c1c31c5a7fbc5e09e1bde
   }
 
   void display() {
