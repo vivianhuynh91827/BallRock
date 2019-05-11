@@ -21,6 +21,8 @@ class Ball extends Thing implements Moveable {
     mode = floor(random(5));
     speedY = random(-5,5);
     speedX = random(-5,5);
+    while (speedX == 0) speedX = random(-5,5);
+    while (speedY == 0) speedY = random(-5,5);
     prevX = x - speedX;
     prevY = y - speedY;
   }
