@@ -36,6 +36,8 @@ void setup() {
   BALL_IMGS = new PImage[] {
     loadImage("basketball.png"), 
     loadImage("volleyball.png"), 
+    loadImage("orange.png"), 
+    loadImage("emoji.png"), 
   };
   ROCK_IMGS = new PImage[] {
     loadImage("rock.png"), 
@@ -54,6 +56,15 @@ void setup() {
 
     Rock r = new Rock(50+random(width-100), 50+random(height-100));
     thingsToDisplay.add(r);
+  }
+  for (int i = 0; i < 2; i++) {
+    FakeBall fb = new FakeBall(50+random(width-100), 50+random(height-100));
+    thingsToDisplay.add(fb);
+    thingsToMove.add(fb);
+
+    RealBall rb = new RealBall(50+random(width-100), 50+random(height-100));
+    thingsToDisplay.add(rb);
+    thingsToMove.add(fb);
   }
   for (int i = 0; i < 3; i++) {
     LivingRock m = new LivingRock(50+random(width-100), 50+random(height-100));
