@@ -24,4 +24,13 @@ class RealBall extends Ball implements Moveable {
       image(ri, x, y, 50, 50);
     }
   }
+  
+  void move() {
+    /* VIVIAN */
+    prevX = x;
+    prevY = y;
+    x += speedX;
+    y += speedY;
+    touchWall();
+  }
 }

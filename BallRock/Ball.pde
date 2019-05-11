@@ -19,19 +19,14 @@ class Ball extends Thing implements Moveable {
     b = random(255);
     i = BALL_IMGS[floor(random(2))];
     mode = floor(random(5));
-    randMove = floor(random(2));
-    speedY = random(-10,10);
-    speedX = random(-10,10);
+    speedY = random(-5,5);
+    speedX = random(-5,5);
     prevX = x - speedX;
     prevY = y - speedY;
   }
 
   void display() {
     /* KAYLA */
-<<<<<<< HEAD
-=======
-
->>>>>>> cd3c333c67507a68eba9bff8d1469a38fd779568
     //rect(x, y, 34, 34);
     if (mode == 0) {
       fill(r, g, b);
@@ -39,25 +34,14 @@ class Ball extends Thing implements Moveable {
     } else {
       image(i, x, y, 50, 50);
     }
-<<<<<<< HEAD
-=======
-
->>>>>>> cd3c333c67507a68eba9bff8d1469a38fd779568
   }
 
   void move() {
     /* VIVIAN */
     prevX = x;
     prevY = y;
-    randMove = 2;
-    if (randMove == 0) {//moving horizontally
-      x += speedX;
-    } else if (randMove == 1) {//moving vertically
-      y += speedY;
-    } else if (randMove == 2) {//moving diagonally
-      x += speedX;
-      y += speedY;
-    }
+    x += speedX;
+    y += speedY;
     touchWall();
   }
   
