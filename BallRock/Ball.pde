@@ -4,6 +4,8 @@ class Ball extends Thing implements Moveable {
   int col;
   PImage i ;
   int randMove;
+  float speedY, speedX;
+  float prevX, prevY;
 
   /** Mode: 0=ellipse, 1=image*/
   int mode;
@@ -17,12 +19,14 @@ class Ball extends Thing implements Moveable {
     b = random(255);
     i = BALL_IMGS[floor(random(2))];
     mode = floor(random(5));
-    randMove = floor(random(2));
+    speedY = random(-5,5);
+    speedX = random(-5,5);
+    prevX = x - speedX;
+    prevY = y - speedY;
   }
 
   void display() {
     /* KAYLA */
-
     //rect(x, y, 34, 34);
     if (mode == 0) {
       fill(r, g, b);
@@ -30,24 +34,23 @@ class Ball extends Thing implements Moveable {
     } else {
       image(i, x, y, 50, 50);
     }
-
   }
 
   void move() {
     /* VIVIAN */
-    int direc = 1;
-    if (randMove == 0) {//moving horizontally
-      x += direc*2;
-    } else if (randMove == 1) {//moving vertically
-      y += direc*2;
-    } else if (randMove == 2) { //moving diagonally
-      x += direc*2;
-      y += direc*2;
+    prevX = x;
+    prevY = y;
+    x += speedX;
+    y += speedY;
+    touchWall();
+  }
+  
+  void touchWall() {
+    if ((x > MAX_WIDTH-45 && prevX < MAX_WIDTH-45) || (x < 0 && prevX > 0)) {
+      speedX *= -1;
     }
-    if (x > MAX_WIDTH || y > MAX_HEIGHT) {
-      direc *= -1;
-      x = MAX_WIDTH-1;
-      y = MAX_HEIGHT-1;
+    if ((y > MAX_HEIGHT-45 && prevY < MAX_HEIGHT-45) || ( y < 0 && prevY > 0)) {
+      speedY *= -1;
     }
   }
 }
