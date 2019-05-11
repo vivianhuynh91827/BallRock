@@ -50,6 +50,12 @@ class FakeBall extends Ball implements Moveable {
     prevY = y;
     x += speedX;
     y += speedY;
+    for (Collideable c : ListOfCollideables) {
+      if (c.isTouching(this)) {
+        speedX *= -1;
+        speedY *= -1;
+      }
+    }
     touchWall();
   }
 }

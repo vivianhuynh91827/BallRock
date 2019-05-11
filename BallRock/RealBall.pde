@@ -42,12 +42,18 @@ class RealBall extends Ball implements Moveable {
     /* VIVIAN */
     prevX = x;
     prevY = y;
-    float dydt = ((xTravelled-(.5*parabWidth)) * speedX * 2)/10;
+    speedY = ((xTravelled-(.5*parabWidth)) * speedX * 2)/10;
     x += speedX;
-    y -= dydt;
+    y -= speedY;
     xTravelled += abs(speedX);
     if (xTravelled >=parabWidth) {
       xTravelled = 0; //reset parabola
+    }
+    for (Collideable c : ListOfCollideables) {
+      if (c.isTouching(this)) {
+        speedX *= -1;
+        speedY *= -1;
+      }
     }
     touchWall();
   }

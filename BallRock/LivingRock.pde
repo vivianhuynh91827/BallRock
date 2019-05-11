@@ -63,7 +63,7 @@ public class LivingRock extends Rock implements Moveable {
   }
   
   boolean isTouching(Thing other) {
-    return true;
+    return false;
   }
   
   @Override
