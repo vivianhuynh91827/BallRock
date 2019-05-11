@@ -45,6 +45,7 @@ class RealBall extends Ball implements Moveable {
     speedY = ((xTravelled-(.5*parabWidth)) * speedX * 2)/10;
     x += speedX;
     y -= speedY;
+    touchWall();
     xTravelled += abs(speedX);
     if (xTravelled >=parabWidth) {
       xTravelled = 0; //reset parabola
@@ -55,7 +56,7 @@ class RealBall extends Ball implements Moveable {
         speedY *= -1;
       }
     }
-    touchWall();
+    //touchWall();
   }
   
 }
