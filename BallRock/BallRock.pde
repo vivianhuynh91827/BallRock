@@ -58,7 +58,7 @@ public class LivingRock extends Rock implements Moveable {
 
   LivingRock(float x, float y) {
     super(x, y);
-    moveV = 4; //floor(random(5));
+    moveV = floor(random(5));
     incX = random(20);
     incY = random(20);
 
@@ -91,10 +91,13 @@ public class LivingRock extends Rock implements Moveable {
       this.y += incY;
     }
 
-    if (moveV == 3) { //bouncing up and down
-      //x += x * incX / y;
-      //y += x * incY / y;
-      
+    if (moveV == 3) { //bouncing  randomly based on x and y positions
+      x += random(-10, 10) * -(x / y) + 1;
+      y += random(-10, 10) * -(x / y) + 1;
+      if(x < 0) x = 999;
+      if(x > 1000) x = 1;
+      if(y < 0) y = 799;
+      if(y > 800) y = 1;
     }
 
     //moving around the center of the screen
