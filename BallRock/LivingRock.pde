@@ -61,7 +61,11 @@ public class LivingRock extends Rock implements Moveable {
       //if(this.y >= 800) this.y = -this.y;
     }
   }
-
+  
+  boolean isTouching(Thing other) {
+    return true;
+  }
+  
   @Override
     void display() {
     super.display();

@@ -10,6 +10,10 @@ interface Moveable {
   void move();
 }
 
+interface Collideable {
+  boolean isTouching(Thing other);
+}
+
 PImage[] ROCK_IMGS;
 PImage EYE_IMG;
 PImage[] BALL_IMGS;
@@ -28,6 +32,7 @@ abstract class Thing implements Displayable {
 
 ArrayList<Displayable> thingsToDisplay;
 ArrayList<Moveable> thingsToMove;
+ArrayList<Collideable> ListOfCollideables;
 
 void setup() {
   size(1000, 800);
@@ -48,9 +53,11 @@ void setup() {
   
   thingsToDisplay = new ArrayList<Displayable>();
   thingsToMove = new ArrayList<Moveable>();
+  ListOfCollideables = new ArrayList<Collideable>();
   for (int i = 0; i < 10; i++) {
     Rock r = new Rock(50+random(width-100), 50+random(height-100));
     thingsToDisplay.add(r);
+    ListOfCollideables.add(r);
   }
   for (int i = 0; i < 9; i++) {
     FakeBall fb = new FakeBall(50+random(width-100), 50+random(height-100));
@@ -65,6 +72,7 @@ void setup() {
     LivingRock m = new LivingRock(50+random(width-100), 50+random(height-100));
     thingsToDisplay.add(m);
     thingsToMove.add(m);
+    ListOfCollideables.add(m);
   }
 }
 void draw() {

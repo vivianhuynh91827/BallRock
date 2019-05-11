@@ -1,9 +1,13 @@
-class Rock extends Thing {
+class Rock extends Thing implements Collideable {
   PImage img;
 
   Rock(float x, float y) {
     super(x, y);
     img = ROCK_IMGS[floor(random(2))];
+  }
+  
+  boolean isTouching(Thing other) {
+    return true;
   }
 
   void display() {
