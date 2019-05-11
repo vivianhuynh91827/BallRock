@@ -20,9 +20,14 @@ Vivian - Move - Made the shape move randomly
 We used some references from this website: https://processing.org/discourse/beta/num_1264000877.html to write the movement pattern for a circle.
 
 Kayla - I imported two different images and set their sizes. The balls would choose a random color, movement, and currently, image as well (This would change when we add the simple/complex).  The ball stays in bounds but can only move horizontally, vertically, and diagonally.
+image: https://processing.org/reference/image_.html
 
 5/8/19:
 - Tiffany added some features to the move method in regards to the wrapping of the screen and what happens when the object moves out of the screen. She also fixed the circle path code that makes the objects orbit in a circle around the center.
 - Tiffany and Ruoshui played around with the increment speeds, using the x and y values.
 
 Kayla - I tried to create random modes (randomly choose between simple/complex/image).  I also tried to code choosing random images as well.  It is still in progress.
+
+5/11/19:
+Kayla - I created two subclasses: RealBall and FakeBall.  The simple shapes for each are labeled "F" and "R" to make them easier to differentiate.
+text: https://processing.org/reference/text_.html

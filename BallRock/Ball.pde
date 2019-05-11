@@ -28,6 +28,10 @@ class Ball extends Thing implements Moveable {
 
   void display() {
     /* KAYLA */
+<<<<<<< HEAD
+=======
+
+>>>>>>> cd3c333c67507a68eba9bff8d1469a38fd779568
     //rect(x, y, 34, 34);
     if (mode == 0) {
       fill(r, g, b);
@@ -35,6 +39,10 @@ class Ball extends Thing implements Moveable {
     } else {
       image(i, x, y, 50, 50);
     }
+<<<<<<< HEAD
+=======
+
+>>>>>>> cd3c333c67507a68eba9bff8d1469a38fd779568
   }
 
   void move() {
