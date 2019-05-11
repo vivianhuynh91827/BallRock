@@ -23,85 +23,98 @@ abstract class Thing implements Displayable {
 
 class Rock extends Thing {
   PImage img;
-  
+
   final PImage[] ROCK_IMGS = new PImage[] {
-      loadImage("rock.png"),
-      loadImage("rock2.png"),
-    };
+    loadImage("rock.png"), 
+    loadImage("rock2.png"), 
+  };
   final PImage EYE_IMG = loadImage("eyes.png");
-  
+
   Rock(float x, float y) {
     super(x, y);
     img = ROCK_IMGS[floor(random(2))];
   }
-  
+
 
   void display() {
     //fill(220, 220, 220);
     //rect(x, y, 10.0, 10.0);
     //rect(x, y, 20.0, 20.0, 5);
     image(img, x, y, 50, 50);
-    
   }
 }
 
-public static enum LvRockType {
-  LN, // Line
-  CIRCLE, // circle
-}
+final float C_X = 500;
+final float  C_Y = 400;
 
 public class LivingRock extends Rock implements Moveable {
-  float x_inc, y_inc;
-  
+  float incX, incY;
+  int moveV;
+  float radius;
+
   // automatically assigned
   PImage eye = EYE_IMG;
-  
-  LvRockType mvType;
-  
-  
-  
+
+
   LivingRock(float x, float y) {
     super(x, y);
-    x_inc = random(5);
-    y_inc = random(10);
-    mvType = LvRockType.LN;//LvRockType.values()[floor(random(LvRockType.values().length))];
+    moveV = 4; //floor(random(5));
+    incX = random(20);
+    incY = random(20);
+
+    if (moveV == 4) {
+      radius = sqrt(pow((x - C_X), 2) + pow((y - C_Y), 2));
+    }
   }
+
   void move() {
     /* ONE PERSON WRITE THIS */
     /*
     this.x += random(5);
-    this.y += random(5);
-    */
-    
+     this.y += random(5);
+     */
+
     // bouncing behavior
-    if(x >= MAX_WIDTH - 50 || x <= 0) x_inc *= -1;
-    if(y >= MAX_HEIGHT - 50 || y <= 0) y_inc *= -1;
-        
-    switch (mvType) {
-      case LN: //straight path
-      x += x_inc;
-      y += y_inc;
-      break;
-    
-      case CIRCLE: //moving in an arc
-      float centerx, centery;
-      centerx = this.x + 10;
-      centery = this.y + 10;
-      float radius = 10.0;
+    if (x >= MAX_WIDTH - 50 || x <= 0) incX *= -1;
+    if (y >= MAX_HEIGHT - 50 || y <= 0) incY *= -1;
+
+    if (moveV == 0) { //moving horizontally
+      this.x += incX;
+    }
+
+    if (moveV == 1) { //moving vertically
+      this.y += incY;
+    }
+
+    if (moveV == 2) { //move diagonally, bouncing
+      this.x += incX;
+      this.y += incY;
+    }
+
+    if (moveV == 3) { //bouncing up and down
+      //x += x * incX / y;
+      //y += x * incY / y;
+      
+    }
+
+    //moving around the center of the screen
+    if (moveV == 4) {
+      //int radius = sqrt(centerx * centerx)
       float t = millis()/1000.0f;
-      this.x = (int)(centerx+radius*cos(t));
-      this.y = (int)(centery+radius*sin(t));
-      break;
+      this.x = (int)(C_X+ radius * cos(t));
+      this.y = (int)(C_Y+ radius * sin(t));
+      //if(this.x >= 1000) this.x = -this.x;
+      //if(this.y >= 800) this.y = -this.y;
     }
   }
+
   @Override
-  void display() {
+    void display() {
     super.display();
     image(eye, x + 10, y + 10, 50, 50);
   }
-  
-      
 }
+
 
 class Ball extends Thing implements Moveable {
   Ball(float x, float y) {
@@ -140,8 +153,6 @@ void setup() {
     thingsToDisplay.add(m);
     thingsToMove.add(m);
   }
-  
-  
 }
 void draw() {
   background(255);
@@ -151,5 +162,4 @@ void draw() {
   for (Moveable thing : thingsToMove) {
     thing.move();
   }
-  
 }
