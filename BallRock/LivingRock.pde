@@ -2,7 +2,7 @@
 final float C_X = 500;
 final float  C_Y = 400;
 
-public class LivingRock extends Rock implements Moveable {
+public class LivingRock extends Rock implements Moveable, Collideable{
   float incX, incY;
   int moveV;
   float radius;
@@ -13,7 +13,7 @@ public class LivingRock extends Rock implements Moveable {
 
   LivingRock(float x, float y) {
     super(x, y);
-    moveV = 4; //floor(random(5));
+    moveV = floor(random(5));
     incX = random(20);
     incY = random(20);
 
@@ -60,10 +60,21 @@ public class LivingRock extends Rock implements Moveable {
       //if(this.x >= 1000) this.x = -this.x;
       //if(this.y >= 800) this.y = -this.y;
     }
+    
+    for(int i = 0; i < ListOfCollideables.size(); i++){
+      Thing temp = (Thing) ListOfCollideables.get(i);
+      if(this != temp){
+        if(isTouching(temp)){
+          if(this.img == ROCK_IMGS[0]){
+            this.img = ROCK_IMGS[1];
+          }else this.img = ROCK_IMGS[0];
+        }
+      }
+    }
   }
   
   boolean isTouching(Thing other) {
-    return true;
+    return super.isTouching(other);
   }
   
   @Override
