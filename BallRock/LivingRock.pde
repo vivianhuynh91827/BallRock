@@ -47,8 +47,8 @@ public class LivingRock extends Rock implements Moveable, Collideable{
     }
 
     if (moveV == 3) { //bouncing up and down
-      //x += x * incX / y;
-      //y += x * incY / y;
+      x += x * (incX / y) * incX + 1;
+      y += x * (incY / y) * incY + 1;
     }
 
     //moving around the center of the screen
