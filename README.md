@@ -1,16 +1,15 @@
 # BallRock
 
-Rock
+## Roles
+### Rock
 - Display: Ruoshui Mao
 - Move: Tiffany Cao
-
-Ball
+### Ball
 - Display: Kayla
 - Move: Vivian
 
-
-5/6/19:
-
+## Change log
+### 5/6/19:
 Rock
 
 - Tiffany played around with the movements, testing different increments and directions of movements.
@@ -22,7 +21,7 @@ Ball
 - Vivian made the shape move randomly.
 
 
-5/7/19:
+### 5/7/19:
 
 Rock
 
@@ -35,7 +34,7 @@ Ball
 - Kayla imported two different images and set their sizes. The balls would choose a random color, movement, and currently, image as well (This would change when we add the simple/complex).  The ball stays in bounds but can only move horizontally, vertically, and diagonally.
 image: https://processing.org/reference/image_.html
 
-5/8/19:
+### 5/8/19:
 
 Rock
 
@@ -47,7 +46,7 @@ Ball
 - Kayla tried to create random modes (randomly choose between simple/complex/image). Kayla also tried to code choosing random images as well.  It is still in progress.
 
 
-5/11/19:
+### 5/11/19:
 
 Ruoshui - Merge Ball and Rock branch into master and resolves many merge conflicts.
 
