@@ -66,6 +66,8 @@ public class LivingRock extends Rock implements Moveable, Collideable{
         if(c.isTouching(this)){
           if(this.img == ROCK_IMGS[0]) this.img = ROCK_IMGS[1];
           else this.img = ROCK_IMGS[0];
+          incX *= -1;
+          incY *= -1;
         }
       }
     }
