@@ -23,7 +23,18 @@ class FakeBall extends Ball implements Moveable {
       text("F", x - 4, y + 4);
     } 
     else if (m == 1) {
-      
+      fill(255, 179, 98);
+      ellipse(x, y, 49, 49);
+      fill(r, g, b);
+      ellipse(x, y, 37, 37);
+      fill(255, 255, 255);
+      ellipse(x, y, 10, 10);
+      fill(0, 0, 0);
+      ellipse(x - 9, y + 9, 5, 5);
+      fill(0, 0, 0);
+      ellipse(x + 9, y + 9, 5, 5);
+      fill(0, 0, 0);
+      line(x - 3, y + 10, x + 3, y + 10);
     }
     else if (m == 2) {
       

@@ -52,7 +52,7 @@ void setup() {
     Rock r = new Rock(50+random(width-100), 50+random(height-100));
     thingsToDisplay.add(r);
   }
-  for (int i = 0; i < 7; i++) {
+  for (int i = 0; i < 9; i++) {
     FakeBall fb = new FakeBall(50+random(width-100), 50+random(height-100));
     thingsToDisplay.add(fb);
     thingsToMove.add(fb);
