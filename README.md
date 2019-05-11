@@ -31,3 +31,5 @@ Kayla - I tried to create random modes (randomly choose between simple/complex/i
 5/11/19:
 Kayla - I created two subclasses: RealBall and FakeBall.  The simple shapes for each are labeled "F" and "R" to make them easier to differentiate.
 text: https://processing.org/reference/text_.html
+
+Vivian - I made the FakeBalls just bounce around the screen. I attempted to have the RealBalls move in a large parabolic motion but it didn't work as planned but they kind of bounce off the air(??)
