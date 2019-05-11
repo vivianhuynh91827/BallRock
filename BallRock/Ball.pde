@@ -22,8 +22,6 @@ class Ball extends Thing implements Moveable {
 
   void display() {
     /* KAYLA */
-    float prevX = x;
-    float prevY = y;
 
     //rect(x, y, 34, 34);
     if (mode == 0) {
@@ -32,9 +30,7 @@ class Ball extends Thing implements Moveable {
     } else {
       image(i, x, y, 50, 50);
     }
-    //for (int a = 0; a < n; a++) {
-    //  line(prevX, prevY, );
-    //}
+
   }
 
   void move() {

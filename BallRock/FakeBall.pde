@@ -14,18 +14,15 @@ class FakeBall extends Ball implements Moveable {
   
   void display() {
     /* KAYLA */
-    float prevX = x;
-    float prevY = y;
-
     //rect(x, y, 34, 34);
     if (m == 0) {
       fill(r, g, b);
-      ellipse(x, y, 10, 10);
+      ellipse(x, y, 20, 20);
+      fill(0);
+      textSize(10);
+      text("F", x - 3, y + 3);
     } else {
       image(fi, x, y, 50, 50);
     }
-    //for (int a = 0; a < n; a++) {
-    //  line(prevX, prevY, );
-    //}
   }
 }
