@@ -3,11 +3,11 @@ class RealBall extends Ball implements Moveable {
   int m1;
   float r, g, b;
   float parabHeight, parabWidth, xTravelled;
-  
+
 
   RealBall(float x, float y) {
     super(x, y);
-    speedX = random(2,3);
+    speedX = random(2, 3);
     parabHeight = y; //parabola = x^2 - parabHeight // dydt = -2x(dxdt) // dxdt = speedX
     parabWidth = 2* sqrt(800-y);
     xTravelled = parabWidth *.5;
@@ -17,6 +17,8 @@ class RealBall extends Ball implements Moveable {
     ri = BALL_IMGS[floor(random(2))];
     m1 = floor(random(3));
   }
+  
+  @Override
   void display() {
     /* KAYLA */
     //rect(x, y, 34, 34);
@@ -26,6 +28,7 @@ class RealBall extends Ball implements Moveable {
       fill(0);
       textSize(10);
       text("R", x - 4, y + 4);
+<<<<<<< HEAD
     } 
     else if (m1 == 1) {
       fill(r, g, b);
@@ -38,10 +41,16 @@ class RealBall extends Ball implements Moveable {
       ellipse(x, y + 9, 5, 5);
     }
     else {
+=======
+    } else if (m1 == 1) {
+    } else if (m1 == 2) {
+    } else {
+>>>>>>> 3c16b37b9a45ce13ea7de31b8661b078380da4f5
       image(ri, x, y, 50, 50);
     }
   }
-  
+
+  @Override
   void move() {
     /* VIVIAN */
     prevX = x;
@@ -62,5 +71,4 @@ class RealBall extends Ball implements Moveable {
     }
     //touchWall();
   }
-  
 }
