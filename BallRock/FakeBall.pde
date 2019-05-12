@@ -37,7 +37,17 @@ class FakeBall extends Ball implements Moveable {
       line(x - 3, y + 10, x + 3, y + 10);
     }
     else if (m == 2) {
-      
+      //arc(x, y, 50, 50, 0, 2 * PI/3 ); 
+      fill(255, 255, 0);
+      arc(x, y, 50, 50, 0, 2*PI/3 ); 
+      fill(0, 255, 0);
+      arc(x, y, 50, 50, 2*PI/3 , 4 * PI/3 ); 
+      fill(255, 0, 0);
+      arc(x, y, 50, 50, 4 * PI/3 , PI * 2); 
+      fill(255);
+      ellipse(x, y, 25, 25);
+      fill(22, 133, 183);
+      ellipse(x, y, 18, 18);
     }
     else {
       image(fi, x, y, 50, 50);

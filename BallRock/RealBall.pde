@@ -15,7 +15,7 @@ class RealBall extends Ball implements Moveable {
     g = random(255);
     b = random(255);
     ri = BALL_IMGS[floor(random(2))];
-    m1 = floor(random(4));
+    m1 = floor(random(3));
   }
   void display() {
     /* KAYLA */
@@ -28,10 +28,14 @@ class RealBall extends Ball implements Moveable {
       text("R", x - 4, y + 4);
     } 
     else if (m1 == 1) {
-      
-    }
-    else if (m1 == 2) {
-      
+      fill(r, g, b);
+      ellipse(x, y, 49, 49);
+      fill(0, 0, 0);
+      ellipse(x - 7, y - 2, 5, 5);
+      fill(0, 0, 0);
+      ellipse(x + 8, y - 2, 5, 5);
+      fill(0, 0, 0);
+      ellipse(x, y + 9, 5, 5);
     }
     else {
       image(ri, x, y, 50, 50);

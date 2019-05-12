@@ -29,7 +29,7 @@ image: https://processing.org/reference/image_.html
 Kayla - I tried to create random modes (randomly choose between simple/complex/image).  I also tried to code choosing random images as well.  It is still in progress.
 
 5/11/19:
-Kayla - I created two subclasses: RealBall and FakeBall.  The simple shapes for each are labeled "F" and "R" to make them easier to differentiate.
+Kayla - I created two subclasses: RealBall and FakeBall.  The simple shapes for each are labeled "F" and "R" to make them easier to differentiate.  Each subclass should have their own simple and complex shapes as well as two images to randomly choose from.
 text: https://processing.org/reference/text_.html
 
 Vivian - I made the FakeBalls just bounce around the screen. I attempted to have the RealBalls move in a large parabolic motion but it didn't work as planned but they kind of bounce off the air(??)
