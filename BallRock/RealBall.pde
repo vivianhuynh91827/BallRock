@@ -28,7 +28,6 @@ class RealBall extends Ball implements Moveable {
       fill(0);
       textSize(10);
       text("R", x - 4, y + 4);
-<<<<<<< HEAD
     } 
     else if (m1 == 1) {
       fill(r, g, b);
@@ -41,11 +40,6 @@ class RealBall extends Ball implements Moveable {
       ellipse(x, y + 9, 5, 5);
     }
     else {
-=======
-    } else if (m1 == 1) {
-    } else if (m1 == 2) {
-    } else {
->>>>>>> 3c16b37b9a45ce13ea7de31b8661b078380da4f5
       image(ri, x, y, 50, 50);
     }
   }
