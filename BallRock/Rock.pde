@@ -5,11 +5,11 @@ class Rock extends Thing implements Collideable {
     super(x, y);
     img = ROCK_IMGS[floor(random(2))];
   }
-  
+
   boolean isTouching(Thing other) {
-    if((Math.abs(this.x - other.x) < 20) && (Math.abs(this.y - other.y) < 20)){
+    if ((Math.abs(this.x - other.x) < 35) && (Math.abs(this.y - other.y) < 40)) {
       return true;
-    }else return false;
+    } else return false;
   }
 
   void display() {

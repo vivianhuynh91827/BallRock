@@ -37,6 +37,8 @@ ArrayList<Collideable> ListOfCollideables;
 void setup() {
   size(1000, 800);
   
+  
+
   // Init Images. No way around this.
   BALL_IMGS = new PImage[] {
     loadImage("basketball.png"), 
@@ -49,7 +51,7 @@ void setup() {
     loadImage("rock2.png"), 
   };
   EYE_IMG = loadImage("eyes.png");
-  
+  imageMode(CENTER);
   
   thingsToDisplay = new ArrayList<Displayable>();
   thingsToMove = new ArrayList<Moveable>();
