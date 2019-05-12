@@ -53,7 +53,7 @@ Ruoshui - Merge Ball and Rock branch into master and resolves many merge conflic
 Kayla - I created two subclasses: RealBall and FakeBall.  The simple shapes for each are labeled "F" and "R" to make them easier to differentiate.
 text: https://processing.org/reference/text_.html
 
-Vivian - I made the FakeBalls just bounce around the screen. I attempted to have the RealBalls move in a large parabolic motion but it didn't work as planned but they kind of bounce off the air(??)
+Vivian - I made the FakeBalls just bounce around the screen. I attempted to have the RealBalls move in a large parabolic motion but it didn't work as planned but they kind of bounce off the air(??). Make balls check for collision. When colliding, they reverse their direction.
 
 Tiffany - I implemented Collideable for Living Rocks and made it so that everytime a Living Rock collided with another Collideable object, it would change it's moving direction and change its image. I also fixed the move method because some Living Rocks would not move at all.
 
