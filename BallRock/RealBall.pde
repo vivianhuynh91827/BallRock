@@ -20,7 +20,12 @@ class RealBall extends Ball implements Moveable {
   void display() {
     /* KAYLA */
     //rect(x, y, 34, 34);
-    if (m1 == 0) {
+    if (timeRed > 0) {
+      fill(255,0,0);
+      ellipse(x,y,49,49);
+      timeRed-=1;
+    }
+    else if (m1 == 0) {
       fill(r, g, b);
       ellipse(x, y, 49, 49);
       fill(0);
@@ -54,6 +59,7 @@ class RealBall extends Ball implements Moveable {
       if (c.isTouching(this)) {
         speedX *= -1;
         speedY *= -1;
+        timeRed = 20;
       }
     }
     //touchWall();

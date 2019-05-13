@@ -6,6 +6,7 @@ class Ball extends Thing implements Moveable {
   int randMove;
   float speedY, speedX;
   float prevX, prevY;
+  int timeRed;
 
   /** Mode: 0=ellipse, 1=image*/
   int mode;
