@@ -63,3 +63,7 @@ Vivian - I made the FakeBalls just bounce around the screen. I attempted to have
 Tiffany - I implemented Collideable for Living Rocks and made it so that everytime a Living Rock collided with another Collideable object, it would change it's moving direction and change its image. I also fixed the move method because some Living Rocks would not move at all.
 
 Ruoshui - Minor changes to code. Make objects easier to collide. Use CENTER for image mode.
+
+### 5/11/19:
+
+Vivian - I made the balls turn red for a few seconds after colliding with a rock
