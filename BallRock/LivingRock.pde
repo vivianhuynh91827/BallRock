@@ -14,14 +14,15 @@ public class LivingRock extends Rock implements Moveable, Collideable{
   LivingRock(float x, float y) {
     super(x, y);
     moveV = floor(random(5));
-    incX = random(1, 20);
-    incY = random(1, 20);
+    incX = random(1, 10);
+    incY = random(1, 10);
 
     if (moveV == 4) {
       radius = sqrt(pow((x - C_X), 2) + pow((y - C_Y), 2));
     }
   }
 
+  @Override
   void move() {
     /* TIFFANY */
     /*
@@ -77,6 +78,7 @@ public class LivingRock extends Rock implements Moveable, Collideable{
     }
   }
   
+  @Override
   boolean isTouching(Thing other) {
     return super.isTouching(other);
   }
