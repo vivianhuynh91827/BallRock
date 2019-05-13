@@ -64,6 +64,6 @@ Tiffany - I implemented Collideable for Living Rocks and made it so that everyti
 
 Ruoshui - Minor changes to code. Make objects easier to collide. Use CENTER for image mode.
 
-### 5/11/19:
+### 5/12/19:
 
 Vivian - I made the balls turn red for a few seconds after colliding with a rock
